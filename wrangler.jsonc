@@ -1,5 +1,12 @@
+
 {
-  // ...
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "webapplication-hba",
+  "compatibility_date": "2026-10-15",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
   "observability": {
     "logs": {
       "enabled": true,
@@ -12,6 +19,5 @@
       "head_sampling_rate": 1,
       "persist": true
     }
-  },
-  // ...
+  }
 }
