@@ -1,1 +1,15 @@
 
+{
+  "$schema": "./todo-frontend/node_modules/wrangler/config-schema.json",
+  "name": "webapplication-hba",
+  "compatibility_date": "2026-10-15",
+  "assets": {
+    "directory": "./todo-frontend/dist",
+    "not_found_handling": "single-page-application"
+  },
+  "observability": {
+    "logs": {
+      "enabled": true
+    }
+  }
+}
