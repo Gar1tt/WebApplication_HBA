@@ -1,42 +1,325 @@
+```css
 #root {
-    min-height: 150vh;
-    padding: 50px 30px;
-    background: grey;
+    min-height: 100vh;
 }
 
-h1 {
-    text-align: center;
-    margin: 0 0 20px;
-    font-family: Arial, sans-serif;
-}
-
-.todo-list {
-    max-width: 700px;
+.app-container {
+    width: min(100% - 40px, 760px);
     margin: 0 auto;
+    padding: 60px 0 30px;
+}
+
+/* Header */
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+    color: #7257e8;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.app-header h1 {
+    margin: 0;
+    color: #202033;
+    font-size: clamp(2.3rem, 6vw, 3.4rem);
+    letter-spacing: -2px;
+    line-height: 1.1;
+}
+
+    .app-header h1 span {
+        color: #7257e8;
+    }
+
+.subtitle {
+    margin: 12px 0 0;
+    color: #77778b;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.task-counter {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #e9e5ff;
+    border-radius: 24px;
+    background: #f0edff;
+}
+
+.counter-number {
+    color: #7257e8;
+    font-size: 2rem;
+    font-weight: 750;
+}
+
+.counter-label {
+    margin-top: 3px;
+    color: #77708e;
+    font-size: 0.75rem;
+}
+
+/* Form */
+
+.form-section,
+.tasks-section {
+    margin-bottom: 30px;
+}
+
+    .form-section h2,
+    .section-heading h2 {
+        margin: 0;
+        color: #25253a;
+        font-size: 1.15rem;
+        font-weight: 700;
+    }
+
+    .form-section h2 {
+        margin-bottom: 15px;
+    }
+
+    /* Styles for the existing TodoForm */
+
+    .form-section form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 20px;
+        border: 1px solid #ececf3;
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 6px 24px rgba(35, 35, 65, 0.04);
+    }
+
+    .form-section input {
+        min-width: 0;
+        flex: 1 1 200px;
+        padding: 13px 14px;
+        border: 1px solid #e3e3ed;
+        border-radius: 10px;
+        outline: none;
+        background: #fafaff;
+        color: #25253a;
+        font: inherit;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+        .form-section input:focus {
+            border-color: #8a73f0;
+            box-shadow: 0 0 0 3px rgba(114, 87, 232, 0.12);
+        }
+
+    .form-section button {
+        padding: 13px 19px;
+        border: none;
+        border-radius: 10px;
+        background: #7257e8;
+        color: white;
+        font: inherit;
+        font-weight: 650;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+    }
+
+        .form-section button:hover {
+            background: #6045d2;
+            transform: translateY(-1px);
+        }
+
+/* Task section heading */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.task-count {
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #eeeaff;
+    color: #6950d8;
+    font-size: 0.8rem;
+    font-weight: 650;
+}
+
+/* Todo cards */
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .todo-item {
-    background: white;
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
+    padding: 20px;
+    border: 1px solid #ececf3;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(35, 35, 65, 0.035);
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+    .todo-item:hover {
+        border-color: #d9d1ff;
+        box-shadow: 0 7px 22px rgba(35, 35, 65, 0.07);
+    }
+
     .todo-item h3 {
-        margin: 0 0 10px;
+        margin: 0 0 8px;
+        color: #25253a;
+        font-size: 1.05rem;
+        overflow-wrap: anywhere;
     }
 
     .todo-item p {
-        color: #555;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0 0 12px;
+        color: #77778b;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
     }
 
     .todo-item small {
         display: block;
-        margin-top: 12px;
-        color: #777;
+        margin-top: 8px;
+        color: #85859a;
+        font-size: 0.8rem;
     }
+
+    /* Buttons inside TodoItem */
+
+    .todo-item button {
+        margin: 14px 8px 0 0;
+        padding: 9px 14px;
+        border: 1px solid #e5e1fb;
+        border-radius: 9px;
+        background: #f4f1ff;
+        color: #654bd5;
+        font: inherit;
+        font-size: 0.85rem;
+        font-weight: 650;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+        .todo-item button:hover {
+            background: #e8e2ff;
+        }
+
+/* Loading, errors and empty state */
+
+.status-message,
+.error-message {
+    padding: 18px;
+    border-radius: 12px;
+    background: #fff;
+    color: #77778b;
+}
+
+.error-message {
+    background: #fff0f0;
+    color: #b42318;
+}
+
+.empty-state {
+    padding: 42px 20px;
+    border: 1px dashed #d9d5e9;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.65);
+    text-align: center;
+}
+
+.empty-icon {
+    display: grid;
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 14px;
+    place-items: center;
+    border-radius: 50%;
+    background: #eeeaff;
+    color: #7257e8;
+    font-size: 1.5rem;
+}
+
+.empty-state h3 {
+    margin: 0 0 8px;
+    color: #25253a;
+}
+
+.empty-state p {
+    max-width: 340px;
+    margin: 0 auto;
+    color: #77778b;
+    line-height: 1.6;
+}
+
+/* Footer */
+
+.app-footer {
+    padding: 22px 0 0;
+    border-top: 1px solid #e8e8f0;
+    color: #9696a8;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* Responsive layout */
+
+@media (max-width: 560px) {
+    .app-container {
+        width: min(100% - 28px, 760px);
+        padding-top: 35px;
+    }
+
+    .app-header {
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .task-counter {
+        width: 76px;
+        height: 76px;
+        border-radius: 18px;
+    }
+
+    .counter-number {
+        font-size: 1.6rem;
+    }
+
+    .counter-label {
+        font-size: 0.65rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .form-section form {
+        padding: 15px;
+    }
+
+    .form-section input,
+    .form-section button {
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    .todo-item {
+        padding: 16px;
+    }
+}
